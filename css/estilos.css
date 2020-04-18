@@ -1,6 +1,54 @@
 body
 {
-    color: palegreen;
-    text-align: center;
+    color: #068D58;
     font-family: "Arial";
+    background-color: rgb(7, 8, 27);
+    padding: 0px;
+    align-items: center;
+    margin: 3px;
+
+}
+
+.container{
+    display: inherit;
+    margin: 0px auto;
+    width: 1400px;
+    align-items: center;
+    justify-content: inherit;
+    height: 80px;
+    flex-wrap: inherit;
+    flex-shrink: inherit;
+}
+
+.header{
+    display: flex;
+    background-color: #182722;
+    margin: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 80px;
+    box-shadow: 0px 0px 195px 69px rgb(1, 12, 3);
+    
+}
+
+.header ol{
+    display: flex;
+    list-style: none;
+    margin-right: -18px;
+}
+
+.header a{
+    text-decoration: none;
+    color:#01E090;
+    margin: 0;
+    padding: 10px 40px;
+    font-weight: bold;
+}
+
+.logo{
+    margin:7px ; 
+}
+
+.icono{
+    margin-right: -35px;
 }
