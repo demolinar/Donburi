@@ -152,6 +152,7 @@ function insert_products(){
   }
 }
 
+//Cambie el tamaño del GenericArrayList. Con mas de 300 Objetos se me cuelga el PC :(
 let product_array_list = new GenericArrayList(15);
 
 insert_products();
