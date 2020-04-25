@@ -8,6 +8,10 @@ class ProductProvider extends Component{
         products: product_array_list
     }
 
+    handleDetail = () =>{
+        console.log("This is your product Details");
+    }
+
     addToCar = () => {
         console.log("Added to yor shopping car");
     }
@@ -16,7 +20,8 @@ class ProductProvider extends Component{
         return(
             <ProductContext.Provider value={{
                 ...this.state,
-                addToCar: this.addToCar()
+                addToCar: this.addToCar(),
+                handleDetail: this.handleDetail()
             }}>
                 {this.props.children}
             </ProductContext.Provider>

@@ -1,5 +1,3 @@
-import GenericArray from "./GenericArray";
-
 // Clase GenericArrayList: Implementación de listas con arreglos. No es necesario
 // implementar Interfaces o Generic Classes como en Java. (Duck Typing)
 
@@ -9,7 +7,7 @@ class GenericArrayList{
         this.size = size;
         this.count = 0;
         this.position = 0;
-        this.array = new GenericArray(this.size);
+        this.array = new Array(this.size);
     }
 
     empty() {
@@ -25,9 +23,9 @@ class GenericArrayList{
         if(!this.full()) {
             if (!this.search(item)) {
                 for (let j = this.count; j > this.position; j--) {
-                    this.array.insertAt(this.array.getElementAtIndex(j-1),j);
+                    this.array[j] = this.array[j-1];
                 }
-                this.array.insertAt(item, this.position);
+                this.array[this.position] = item;
                 this.count++;
                 return inserted;
             } else {
@@ -42,7 +40,7 @@ class GenericArrayList{
         if(!this.empty()) {
             if (this.search(item)) {
                 for (let j = this.position; j < this.count - 1; j++) {
-                    this.array.insertAt(this.array.getElementAtIndex(j + 1), j);
+                    this.array[j] = this.array[j+1];
                 }
                 this.count--;
                 return deleted;
@@ -58,9 +56,9 @@ class GenericArrayList{
         let stop = false;
         this.position = 0;
         while(this.position < this.count && !stop)
-            if(((this.array.getElementAtIndex(this.position).productName).localeCompare(item.productName)) <= 0) {
+            if(((this.array[this.position].productName).localeCompare(item.productName)) <= 0) {
                 stop = true;
-                if((this.array.getElementAtIndex(this.position).productName) === item.productName){
+                if((this.array[this.position].productName) === item.productName){
                     found = true;
                 }
             }else{
@@ -74,9 +72,12 @@ class GenericArrayList{
         console.log('List: ');
         let j = 0;
         while(j !== this.count) {
-            console.log(this.array.getElementAtIndex(j).productPrice);
+            console.log("Product " + j + " : ")
+            console.log(this.array[j].productName + ", " + this.array[j].productPrice +
+                ", " + this.array[j].productCode);
             j++;
         }
+        console.log("Array of:" + this.array.length);
     }
 
 }

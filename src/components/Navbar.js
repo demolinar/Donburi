@@ -3,6 +3,7 @@ import logo from "../logo.svg";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.css';
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
 class Navbar extends Component{
     render() {
@@ -22,7 +23,10 @@ class Navbar extends Component{
                         <div className="collapse navbar-collapse" id="navbarResponsive"/>
 
                         <Link to='shopping-car'>
-                            <button className="btn btn-outline-success my-2 my-sm-0">Shopping Car</button>
+                            <button className="btn btn-outline-success my-2 my-sm-0">
+                                <ShoppingCart className="mr-2"></ShoppingCart>
+                                Shopping Car
+                            </button>
                         </Link>
 
                     </nav>
