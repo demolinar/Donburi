@@ -1,13 +1,9 @@
-import React, {Component} from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-class Product extends Component{
-    render() {
-        return(
-            <div>
-                This is a Product
-            </div>
-        );
+class Product{
+    constructor(name, code, price) {
+        this.productName  = name;
+        this.productCode  = code;
+        this.productPrice = price;
     }
 }
 
