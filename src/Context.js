@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import product_array_list from "./components/ProductArrayListDriver";
+import product_linked_list from "./components/ProductLinkedListDriver";
 
 const ProductContext = React.createContext();
 
 class ProductProvider extends Component{
     state = {
-        products: product_array_list
+        products: product_array_list,
+        productsLinked: product_linked_list
     }
 
     handleDetail = () =>{

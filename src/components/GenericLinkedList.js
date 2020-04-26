@@ -5,6 +5,7 @@ class GenericLinkedList {
     {
         this.head = null;
         this.size = 0;
+        this.array = []
     }
 
     add(element)
@@ -34,7 +35,7 @@ class GenericLinkedList {
 
             curr = this.head;
 
-            if (index == 0) {
+            if (index === 0) {
                 node.next = this.head;
                 this.head = node;
             } else {
@@ -73,11 +74,9 @@ class GenericLinkedList {
                     prev = curr;
                     curr = curr.next;
                 }
-
                 prev.next = curr.next;
             }
             this.size--;
-
             return curr.element;
         }
     }
@@ -120,7 +119,7 @@ class GenericLinkedList {
 
     isEmpty()
     {
-        return this.size == 0;
+        return this.size === 0;
     }
 
     printList()
@@ -132,6 +131,24 @@ class GenericLinkedList {
             curr = curr.next;
         }
         console.log(str);
+    }
+
+    search(key){
+        let current = this.head;
+        while (current !== null){
+            if (current.key === key)
+                return true;
+        }
+        return false;
+    }
+
+    pushToArray(){
+        let curr = this.head;
+
+        while (curr !== null) {
+            this.array.push(curr.element);
+            curr = curr.next;
+        }
     }
 
 }

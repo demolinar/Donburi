@@ -8,7 +8,6 @@ import Title from "./Title";
 import product_array_list from "./ProductArrayListDriver";
 
 class ProductArrayList extends Component{
-
     render() {
         return(
             <div className="py">
@@ -19,7 +18,7 @@ class ProductArrayList extends Component{
                             <ProductConsumer>
                                 {
                                     value =>{
-                                        console.log(product_array_list.array.length);
+                                        console.log(product_array_list.array);
                                         return value.products.array.map(product =>{
                                                 return <ReactProduct key={product.productName} product={product} />
                                             }
