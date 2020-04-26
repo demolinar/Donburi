@@ -22,26 +22,38 @@ class ReactProduct extends Component{
                         <button className="car-btn" disabled={inCar? true:false}  onClick={()=>{console.log('Added to your car');}}>
                             {inCar ? (
                                 <p className="text-capitalize mb-0" disabled>
-                                    {""} in Car
+                                    {""} In Car
                                 </p>
                                 ):(<ShoppingCart></ShoppingCart>)
                             }
                         </button>
-                        {/*Card footer*/}
-                        <div className="card-footer d-flex justify-content-between">
-                            <p className="align-self-center mb-0">
-                                {productName}
-                            </p>
-                            <h5 className="font-italic mb-0">
-                                <span className="mr-1">$</span>
-                                {productPrice}
-                            </h5>
-                        </div>
                     </div>
+
+                    {/*Card footer*/}
+                    <div className="card-footer d-flex justify-content-between">
+                        <p className="align-self-center mb-0">
+                            {productName}
+                        </p>
+                        <h5 className="font-italic mb-0">
+                            <span className="mr-1">$</span>
+                            {productPrice}
+                        </h5>
+                    </div>
+
                 </div>
             </div>
         );
     }
+}
+
+ReactProduct.propTypes = {
+    product:PropTypes.shape({
+        productName:PropTypes.string,
+        productCode:PropTypes.string,
+        productPrice:PropTypes.number,
+        img:PropTypes.string,
+        inCar:PropTypes.bool
+    })
 }
 
 export default ReactProduct;

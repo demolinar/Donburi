@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {ProductConsumer} from "../Context";
 import ReactProduct from "./ReactProduct";
 import Title from "./Title";
+import product_array_list from "./ProductArrayListDriver";
 
 class ProductArrayList extends Component{
 
@@ -18,6 +19,7 @@ class ProductArrayList extends Component{
                             <ProductConsumer>
                                 {
                                     value =>{
+                                        console.log(product_array_list.array.length);
                                         return value.products.array.map(product =>{
                                                 return <ReactProduct key={product.productName} product={product} />
                                             }
