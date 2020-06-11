@@ -22,6 +22,28 @@ class PriorityQueue {
             this.heap[temp] = child;
         }
     }
+    shallowEqual(object1, object2) {
+        const keys1 = Object.keys(object1)
+        const keys2 = Object.keys(object2);
+        for (let index = 0; index < keys1.length; index++) {
+            if (object1[keys1[index]] !== object2[keys2[index]]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    remove(object) {
+        for (let i=0; i<this.size(); i++) {
+            if (this.shallowEqual(object, this.heap[i][0])) {
+                this.heap[i] = this.heap[this.size()-1];
+                this.heap.pop();
+                console.log(this.heap);
+                this.heap.forEach( () => this.move_up() );
+                console.log(this.heap);
+                return;
+            }
+        }
+    }
     insert(data, priority=this.size()+1) {
         this.heap.push([data, priority]);
         this.move_up();
@@ -32,13 +54,16 @@ class PriorityQueue {
         }
         return (pos-2)/2
     }
-    print() {
-        for (let i=0; i<this.size(); i++) {
-            console.log(this.heap[i][0] + " " + this.heap[i][1]);
-        }
-    }
 }
 
 pQueue = new PriorityQueue();
-pQueue.make_heap([['a',5], ['f', 4], ['m', 6], ['p', 9], ['q', 7], ['o', 8], ['x', 2], ['c', 1], ['v', 3], ['l', 10]]);
-pQueue.print();
+pQueue.make_heap([{
+    name: "something"
+}, {
+    name: "else"
+}, {
+    name: "master"
+}]);
+pQueue.remove({
+    name: "something"
+})
