@@ -10,7 +10,7 @@ import product_array_list from "./ProductArrayListDriver";
 class ProductArrayList extends Component{
     render() {
         return(
-            <div className="py">
+            <div className="py mt-lg-5 p-lg-5">
                 <div className="container">
                     <Title title="Products"/>
                     <React.Fragment>
@@ -19,7 +19,7 @@ class ProductArrayList extends Component{
                                 {
                                     value =>{
                                         console.log(product_array_list.array);
-                                        return value.products.array.map(product =>{
+                                        return value.products.map(product =>{
                                                 return <ReactProduct key={product.productName} product={product} />
                                             }
                                         )

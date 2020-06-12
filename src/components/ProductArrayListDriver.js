@@ -1,5 +1,6 @@
 import GenericArrayList from "./GenericArrayList";
 import make_attribute from "./make_attribute";
+//import product_linked_list from "./ProductLinkedListDriver";
 // import objectlist from './objectslist';
 
 //Insertar productos
@@ -16,13 +17,14 @@ function insert_products(){
 
 //Cambie el tamaño del GenericArrayList. Con mas de 10000 Objetos se me cuelga el PC :(
 
-let product_array_list = new GenericArrayList(10000);
+let product_array_list = new GenericArrayList(1000);
 
 //Insertion time
 let start = new Date()
 let simulateTime = 1000
 
-insert_products();
+    insert_products();
+
 
 setTimeout(function(argument) {
     let end = new Date() - start
@@ -33,6 +35,7 @@ setTimeout(function(argument) {
 //Search time
 let start1 = new Date()
 let simulateTime1 = 1000
+
 
 product_array_list.search('Curry');
 
@@ -54,9 +57,6 @@ setTimeout(function(argument) {
     let end = new Date() - start2
     console.info('Execution time (Delete on Array List): %dms', end)
 }, simulateTime2)
-
-
-
 
 
 export default product_array_list;

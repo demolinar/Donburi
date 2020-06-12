@@ -10,7 +10,7 @@ class Navbar extends Component{
         return(
             <div data-spy="scroll" data-target="#navbarResponsive">
                 <div id="navbar">
-                    <nav className="navbar navbar-expand-md navbar-dark bg-custom px-sm-3">
+                    <nav className="navbar fixed-top navbar-expand-md navbar-dark bg-custom px-sm-3">
                         <Link to='/'>
                             <span className="navbar-brand"><img src={logo} alt="logo"/></span>
                         </Link>
@@ -22,10 +22,10 @@ class Navbar extends Component{
 
                         <div className="collapse navbar-collapse" id="navbarResponsive"/>
 
-                        <Link to='shopping-car'>
+                        <Link to='shopping-cart'>
                             <button className="btn btn-outline-success my-2 my-sm-0">
                                 <ShoppingCart className="mr-2"></ShoppingCart>
-                                Shopping Car
+                                Shopping Cart
                             </button>
                         </Link>
 

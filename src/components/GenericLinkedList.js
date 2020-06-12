@@ -136,8 +136,9 @@ class GenericLinkedList {
     lookFor(key){
         let current = this.head;
         while (current !== null){
-            if (current.element.productName === key)
+            if (current.element.productCode === key) {
                 return true;
+            }
         }
         return false;
     }

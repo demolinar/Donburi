@@ -11,7 +11,7 @@ import product_linked_list from "./ProductLinkedListDriver";
 class ProductArrayList extends Component{
     render() {
         return(
-            <div className="py">
+            <div className="py mt-lg-5 p-lg-5">
                 <div className="container">
                     <Title title="Products (Linked List)"/>
                     <React.Fragment>

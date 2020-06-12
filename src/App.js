@@ -5,19 +5,21 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import Details from "./components/Details";
 import ProductArrayList from "./components/ProductArrayList";
-import ShoppingCar from "./components/ShoppingCar";
+import ShoppingCart from "./components/ShoppingCart";
 import Default from "./components/Default";
 import ProductLinkedList from "./components/ProductLinkedList";
+import ProductPreview from "./components/ProductPreview";
 
 function App() {
   return (
       <React.Fragment>
           <Navbar/>
+          <ProductPreview/>
           <Switch>
             <Route exact path='/' component={ProductArrayList}/>
             <Route path='/details' component={Details}/>
             <Route path='/product-linked-list' component={ProductLinkedList}/>
-            <Route path='/shopping-car' component={ShoppingCar}/>
+            <Route path='/shopping-cart' component={ShoppingCart}/>
             <Route component={Default}/>
           </Switch>
       </React.Fragment>

@@ -2,32 +2,42 @@
 
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import {ProductConsumer} from "../Context";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import './ReactProduct.css';
 import PropTypes from 'prop-types';
 
 class ReactProduct extends Component{
     render() {
-        const {productName, productPrice, img, inCar} = this.props.product;
+        const {productName, productPrice, img, inCart} = this.props.product;
         return (
             <div id="product-wrapper" className="col-9 mx-auto col-md-6 col-lg-3 my-3">
                 <div className="card">
-                    <div className="img-container p-5" onClick={()=>console.log("You've clicked me")}>
 
-                        <Link to="/details">
-                            <img src={img} alt="product" className="card-img-top"/>
-                        </Link>
+                    <ProductConsumer>
+                        {value => (
+                            <div className="img-container p-5" onClick={() => value.handleDetail(productName)}>
 
-                        {/*Add to car button*/}
-                        <button className="car-btn" disabled={inCar? true:false}  onClick={()=>{console.log('Added to your car');}}>
-                            {inCar ? (
-                                <p className="text-capitalize mb-0" disabled>
-                                    {""} In Car
-                                </p>
-                                ):(<ShoppingCart></ShoppingCart>)
-                            }
-                        </button>
-                    </div>
+                                <Link to="/details">
+                                    <img src={img} alt="product" className="card-img-top"/>
+                                </Link>
+
+                                {/*Add to car button*/}
+                                <button className="car-btn" disabled={inCart? true:false}  onClick={() => {
+                                    value.addToCart(productName);
+                                    value.openProductPreview(productName);
+                                }}>
+                                    {inCart ? (
+                                        <p className="text-capitalize mb-0" disabled>
+                                            {""} In Cart
+                                        </p>
+                                    ):(<ShoppingCart></ShoppingCart>)
+                                    }
+                                </button>
+
+                            </div>
+                        )}
+                    </ProductConsumer>
 
                     {/*Card footer*/}
                     <div className="card-footer d-flex justify-content-between">
@@ -49,11 +59,13 @@ class ReactProduct extends Component{
 ReactProduct.propTypes = {
     product:PropTypes.shape({
         productName:PropTypes.string,
-        productCode:PropTypes.string,
+        productCode:PropTypes.number,
         productPrice:PropTypes.number,
         img:PropTypes.string,
-        inCar:PropTypes.bool
-    })
+        inCar:PropTypes.bool,
+        total:PropTypes.number,
+        count:PropTypes.number
+    }).isRequired
 }
 
 export default ReactProduct;
