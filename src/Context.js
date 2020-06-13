@@ -1,3 +1,16 @@
+/* Context.js: Maneja la actualización de los Detalles de los producto, así como la actualización de los precios y totales del carrito de compras.
+       ProductProvider: Contiene el estado (state) de los datos del programa, asi como las funciones de actualización.
+           getItem: Busca un producto en específico en la lista state.products, la cual permite que no se modifiquen los datos en el ArrayList original de productos.
+           addToCar: Añade un producto al carrito de compras.
+           openProductPreview: Cambia el valor de verdad de productPreviewOpen, la cual activa la vista de detalles del producto recién añadido al carrito.
+           closeProductPreview: Cambia el valor de verdad de productPreviewOpen, la cual desactiva la vista de detalles del producto recién añadido al carrito.
+           addQuantity: Aumenta la cantidad de un mismo producto dentro del carrito de compras.
+           decreaseQuantity: Disminuye la cantidad de un mismo producto dentro del carrito de compras.
+           removeItem: Remueve un producto en específico del carrito.
+           clearCart: Limpia por completo el carrito.
+           calculateTotal: calcula el subtotal, los impuestos y el total de los productos añadidos al carrito.
+*/
+
 import React, {Component} from "react";
 import product_array_list from "./components/ProductArrayListDriver";
 import product_linked_list from "./components/ProductLinkedListDriver";
@@ -95,8 +108,8 @@ class ProductProvider extends Component{
         const index = tempCart.heap.indexOf(selectedProduct);
         const product = tempCart.heap[index];
 
-        product.count++;
-        product.total = product.count * product.productPrice;
+        product[0].count++;
+        product[0].total = product[0].count * product[0].productPrice;
 
         this.setState(() => {
             return{shoppingCart: tempCart};
@@ -111,11 +124,11 @@ class ProductProvider extends Component{
         const index = tempCart.heap.indexOf(selectedProduct);
         const product = tempCart.heap[index];
 
-        if (product.count === 0){
-            product.count = 0;
+        if (product[0].count === 0){
+            product[0].count = 0;
         } else {
-            product.count = product.count - 1;
-            product.total = product.count * product.productPrice;
+            product[0].count = product[0].count - 1;
+            product[0].total = product[0].count * product[0].productPrice;
             this.setState(() => {
                 return{shoppingCart: tempCart};
             }, () => {
