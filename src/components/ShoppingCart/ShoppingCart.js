@@ -14,7 +14,7 @@ class ShoppingCart extends Component{
                 <ProductConsumer>
                     {value => {
                         const {shoppingCart} = value;
-                        if(shoppingCart.heap.length > 0){
+                        if(shoppingCart.heap.length > 0 ){
                             return (
                                 <React.Fragment>
                                     <Title title="Your Shopping Cart"/>

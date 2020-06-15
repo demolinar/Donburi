@@ -1,4 +1,4 @@
-import GenericLinkedList from "./GenericLinkedList";
+import GenericLinkedList from "../DataStructures/GenericLinkedList";
 import make_attribute from "./make_attribute";
 
 function insert_products_linked_list(){

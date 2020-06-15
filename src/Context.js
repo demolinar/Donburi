@@ -12,9 +12,11 @@
 */
 
 import React, {Component} from "react";
-import product_array_list from "./components/ProductArrayListDriver";
-import product_linked_list from "./components/ProductLinkedListDriver";
-import PriorityQueue from "./components/PriorityQueue";
+import product_array_list from "./components/ProgramDrivers/ProductArrayListDriver";
+import product_linked_list from "./components/ProgramDrivers/ProductLinkedListDriver";
+import PriorityQueue from "./components/DataStructures/PriorityQueue";
+import Queue from "./components/DataStructures/Queue";
+//import product_tree from "./components/ProgramDrivers/ProductTreeDriver";
 
 const productDetails = {
     productName: "Sushi",
@@ -33,7 +35,9 @@ class ProductProvider extends Component{
     state = {
         products: [],
         productsLinked: product_linked_list,
+        //productsTree: product_tree,
         productDetails: productDetails,
+        shoppingCartQueue: new Queue(),
         shoppingCart: new PriorityQueue(),
         productPreviewOpen: false,
         productPreviewModel: productDetails,
@@ -81,9 +85,10 @@ class ProductProvider extends Component{
         product.total = price;
 
         this.state.shoppingCart.insert(product);
+        /*this.state.shoppingCartQueue.enqueue(product);*/
 
         this.setState(() => {
-            return {products: auxProducts, shoppingCar: this.state.shoppingCart.heap};
+            return {products: auxProducts, shoppingCar: this.state.shoppingCart/* shopṕíngCartQueue: this.state.shoppingCartQueue*/};
         },() => {
             this.calculateTotal();
         });
@@ -104,15 +109,23 @@ class ProductProvider extends Component{
 
     addQuantity = productName => {
         let tempCart = this.state.shoppingCart;
+        // let tempCart1 = this.state.shoppingCartQueue;
+
         const selectedProduct = tempCart.heap.find(item => item[0].productName === productName);
+        // const selectedProduct1 = tempCart1.heap.find(item => item.productName === productName);
+
         const index = tempCart.heap.indexOf(selectedProduct);
         const product = tempCart.heap[index];
+        // const index1 = tempCart1.heap.indexOf(selectedProduct1)
+        // const product1 = tempCart1.heap[index1];
 
         product[0].count++;
         product[0].total = product[0].count * product[0].productPrice;
+        // product1.count++;
+        // product1.total = product1.count * product1.productPrice;
 
         this.setState(() => {
-            return{shoppingCart: tempCart};
+            return{shoppingCart: tempCart, /*shoppingCartQueue: tempCart1*/};
         }, () => {
             this.calculateTotal();
         });
@@ -120,9 +133,15 @@ class ProductProvider extends Component{
 
     decreaseQuantity = productName => {
         let tempCart = this.state.shoppingCart;
+        // let tempCart1 = this.state.shoppingCartQueue;
+
         const selectedProduct = tempCart.heap.find(item => item[0].productName === productName);
+        // const selectedProduct1 = tempCart1.heap.find(item => item.productName === productName);
+
         const index = tempCart.heap.indexOf(selectedProduct);
         const product = tempCart.heap[index];
+        // const index1 = tempCart1.heap.indexOf(selectedProduct1)
+        // const product1 = tempCart1.heap[index1];
 
         if (product[0].count === 0){
             product[0].count = 0;
@@ -135,9 +154,38 @@ class ProductProvider extends Component{
                 this.calculateTotal();
             });
         }
+
+        // if (product1.count === 0){
+        //     product1.count = 0;
+        // } else {
+        //     product1.count = product1.count - 1;
+        //     product1.total = product1.count * product1.productPrice;
+        //     this.setState(() => {
+        //         return{shoppingCartQueue: tempCart1};
+        //     }, () => {
+        //         this.calculateTotal();
+        //     });
+        // }
     };
 
     removeItem = productName => {
+        let auxProducts = [...this.state.products];
+        let tempCart = this.state.shoppingCart;
+        tempCart = tempCart.heap.filter(item => item[0].productName !== productName);
+
+        const index = auxProducts.indexOf(this.getItem(productName));
+        let removed = auxProducts[index];
+        removed.inCart = false;
+        removed.total = 0;
+        removed.count = 0;
+
+        let newCart = new PriorityQueue();
+        newCart.heap = tempCart;
+
+
+        this.setState(() => {
+            return {shoppingCart: newCart, products: [...auxProducts]}
+        });
 
     };
 

@@ -1,3 +1,7 @@
+//import make_attribute from "./make_attribute";
+//import product_array_list from "./ProductArrayListDriver";
+
+
 class PriorityQueue {
     constructor() {
         this.heap = [];
@@ -32,6 +36,11 @@ class PriorityQueue {
         }
         return (pos-2)/2
     }
+
+    search(object){
+        let results = this.heap.filter(item => item[0].productName === object);
+        return results;
+    }
     print() {
         for (let i=0; i<this.size(); i++) {
             console.log(this.heap[i][0] + " " + this.heap[i][1]);
@@ -61,8 +70,53 @@ class PriorityQueue {
     }
 }
 
-let pQueue = new PriorityQueue();
-pQueue.make_heap([['a',5], ['f', 4], ['m', 6], ['p', 9], ['q', 7], ['o', 8], ['x', 2], ['c', 1], ['v', 3], ['l', 10]]);
-pQueue.print();
+// let pQueue = new PriorityQueue();
+//
+// function insert_products(){
+//     for (let i=0; i<=1000; i++){
+//         //Comment the next lines to prove with the objectlist
+//         let product = make_attribute();
+//         pQueue.insert(product);
+//         //Comment the next line to prove with make_attribute()
+//     }
+// }
+//
+// //Insertion time
+// let start = new Date()
+// let simulateTime = 1000
+//
+// insert_products();
+//
+// setTimeout(function(argument) {
+//     let end = new Date() - start
+//     console.info('Execution time (Insertion on PriorityQueue): %dms', end)
+// }, simulateTime)
+//
+// //Search time
+// let start1 = new Date()
+// let simulateTime1 = 1000
+//
+//
+// pQueue.search('Curry');
+//
+// setTimeout(function(argument) {
+//     let end = new Date() - start1
+//     console.info('Execution time (Search on PriorityQueue): %dms', end)
+// }, simulateTime1)
+//
+//
+//
+// //Deletion time
+// let start2 = new Date()
+// let simulateTime2 = 1000
+//
+// for (let j=0; j<2500; j++){
+//     pQueue.remove(product_array_list.array[0]);
+// }
+//
+// setTimeout(function(argument) {
+//     let end = new Date() - start2
+//     console.info('Execution time (Delete on PriorityQueue): %dms', end)
+// }, simulateTime2)
 
 export default PriorityQueue;

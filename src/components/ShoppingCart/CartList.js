@@ -7,7 +7,7 @@ function CartList ({value}) {
 
     return(
         <div className="container-fluid">
-            {shoppingCart.heap.map(item =>{
+            {shoppingCart.heap.map(item => {
                 return <CartItem key={item.productName} item={item[0]} value={value}/>
             })}
         </div>

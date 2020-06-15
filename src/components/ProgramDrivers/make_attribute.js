@@ -1,6 +1,6 @@
 //Funciones que insertan productos aleatorios a un GenericArrayList
 
-import Product from "./Product";
+import Product from "../Product";
 
 let comida = ["Dorayaki", "Sushi", "Curry", "Yakisoba", "Cerdo dulce", "Ramen", "Soba fideos", "Satay", "Nieve mango",
     "Ddeokbokki", "Takoyakis", "Tofu frito", "Yakitori", "Peking duck", "Pez globo", "Teokbokki", "Genmaicha",

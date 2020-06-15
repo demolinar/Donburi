@@ -1,4 +1,4 @@
-import GenericArrayList from "./GenericArrayList";
+import GenericArrayList from "../DataStructures/GenericArrayList";
 import make_attribute from "./make_attribute";
 //import product_linked_list from "./ProductLinkedListDriver";
 // import objectlist from './objectslist';
