@@ -28,6 +28,7 @@ class Navbar extends Component{
                                                value.setSearch(e);
                                            }}
                                     />
+
                                     <Link to='results'>
                                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit"
                                         onClick={() => {
@@ -36,11 +37,17 @@ class Navbar extends Component{
                                         }}>Search
                                         </button>
                                     </Link>
+
                                 </form>
                             )}
                         </ProductConsumer>
 
                         <div className="collapse navbar-collapse" id="navbarResponsive"/>
+
+                        <Link to='register'>
+                            <button className="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Sign Up
+                            </button>
+                        </Link>
 
                         <Link to='shopping-cart'>
                             <button className="btn btn-outline-success my-2 my-sm-0">

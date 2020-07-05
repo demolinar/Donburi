@@ -7,7 +7,7 @@ import product_linked_list from "./components/ProgramDrivers/ProductLinkedListDr
 import PriorityQueue from "./components/DataStructures/PriorityQueue";
 import Queue from "./components/DataStructures/Queue";
 import product_tree from "./components/ProgramDrivers/ProductTreeDriver";
-
+import usersHash from "./data/users";
 
 const productDetails = {
     productName: "Sushi",
@@ -25,6 +25,11 @@ const ProductContext = React.createContext();
 //ProductProvider: Contiene el estado (state) de los datos del programa, asi como las funciones de actualización.
 class ProductProvider extends Component{
     state = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        users: usersHash,
         products: [],
         searchResults: [],
         productsLinked: product_linked_list,
@@ -43,6 +48,53 @@ class ProductProvider extends Component{
     componentDidMount() {
         this.setProducts();
     };
+
+    setFirstName = e => {
+        let fn = e.currentTarget.value;
+        this.setState(()=> {
+            return {firstName: fn}
+        })
+    }
+
+    setLastName = e => {
+        let ln = e.currentTarget.value;
+        this.setState(()=> {
+            return {lastName: ln}
+        })
+    }
+
+    setEmail = e => {
+        let em = e.currentTarget.value;
+        this.setState(()=> {
+            return {email: em}
+        })
+    }
+
+    setPassword = e => {
+        let p = e.currentTarget.value;
+        this.setState(()=> {
+            return {password: p}
+        })
+    }
+
+    register = () => {
+        let newUser = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password
+        };
+        this.setState( () => {
+            return {users: this.state.users.insert(newUser.firstName, newUser),
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: ""
+            }
+        });
+        console.log(this.state.users.array);
+    }
+
     //getItem: Realiza una copia del ArrayList en state.products, la cual permite que no se modifiquen los datos en el ArrayList original de productos.
     setProducts = () => {
         let products = [];
@@ -112,8 +164,6 @@ class ProductProvider extends Component{
 
     //search: Filtra la lista de productos y devuelve el resultado
     search = () => {
-        console.log(this.state.searchString);
-        console.log(this.getSearch);
         if(this.state.searchString === ''){
             this.setState(() => {
                 return {searchResults: []};
@@ -257,6 +307,11 @@ class ProductProvider extends Component{
         return(
             <ProductContext.Provider value={{
                 ...this.state,
+                setFirstName: this.setFirstName,
+                setLastName: this.setLastName,
+                setEmail: this.setEmail,
+                setPassword:this.setPassword,
+                register: this.register,
                 addToCart: this.addToCart,
                 handleDetail: this.handleDetail,
                 search: this.search,
@@ -277,5 +332,6 @@ class ProductProvider extends Component{
 }
 
 const ProductConsumer = ProductContext.Consumer;
+
 
 export {ProductProvider, ProductConsumer};

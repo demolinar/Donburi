@@ -12,6 +12,7 @@ import Default from "./components/Default";
 import ProductPreview from "./components/ProductPreview";
 import Search from "./components/Search";
 import HashTable from "./components/DataStructures/HashTable";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route exact path='/' component={ProductArrayList}/>
             <Route exact path='/' component={HashTable}/>
             <Route path='/details' component={Details}/>
+            <Route exact path='/register' component={Register}/>
             <Route path='/product-linked-list' component={ProductLinkedList}/>
             <Route path='/product-tree' component={ProductTree}/>
             <Route path='/shopping-cart' component={ShoppingCart}/>

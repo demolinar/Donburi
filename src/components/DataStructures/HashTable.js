@@ -1,4 +1,4 @@
-import users1 from "../../data/users";
+
 class HashTable {
 
     constructor(size) {
@@ -30,11 +30,6 @@ class HashTable {
         }
         return this.array[index].find(x => x[0] === key)[1];
     }
-}
-
-let hash = new HashTable(23);
-for( let j=0; j<users1.length; j++){
-    hash.insert(users1[j].firstName, users1[j]);
 }
 
 export default HashTable;

@@ -1,3 +1,5 @@
+import HashTable from "../components/DataStructures/HashTable";
+
 let users1 = [
     {"firstName": "Abbot", "lastName": "Meadows", "email": "eleifend.nunc.risus@in.net", "country": "Uzbekistan", "phone": "283-1754", "address": "758-8237 Nisi. St."},
     {"firstName": "Nerea", "lastName": "Avery", "email": "Donec.nibh.Quisque@lobortis.org", "country": "China", "phone": "650-0086", "address": "Ap #989-401 Erat. St."},
@@ -501,5 +503,9 @@ let users1 = [
     {"firstName": "Kamal", "lastName": "Cantu", "email": "eu.odio.Phasellus@necluctus.co.uk", "country": "Brunei", "phone": "182-2724", "address": "4995 Enim. Ave"}
 ];
 
+let usersHash = new HashTable(1000);
+for( let j=0; j<users1.length; j++){
+    usersHash.insert(users1[j].firstName, users1[j]);
+}
 
-export default users1;
+export default usersHash;
