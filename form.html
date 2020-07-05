@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, inital-scale=1">
+        <style>
+            form {
+                background: #efefef;
+                padding: 2em;
+            }
+
+            input {
+                margin-bottom: 1em;
+                padding: .3em;
+                margin-left: .3em;
+                border: none;
+            }
+
+            button {
+                background: white;
+                color: blue;
+                border: none;
+                padding: 1em 2.5em;
+                cursor: pointer;
+            }
+
+            button:hover, button:focus {
+                background: black;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="#" method="POST">
+            <label for="nombre">
+                Nombre
+                <input type="text" id="nombre" required>
+            </label>
+            <br>
+            <label for="apellido">
+                Apellido
+                <input type="text" id="apellido" required>
+            </label>
+            <br>
+            <label for="correo">
+                Correo
+                <input type="email" id="correo" required>
+            </label>
+            <br>
+            <label for="contraseña">
+                Contraseña
+                <input type="password" id="contraseña" required>
+            </label>
+            <br>
+            <button type="submit">enviar</button>
+        </form>
+    </body>
+</html>
