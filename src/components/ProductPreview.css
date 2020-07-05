@@ -1,0 +1,42 @@
+.py mt-lg-5 p-lg-5{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-8 mx-auto col-md-6 col-lg-4 text-center p-5{
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 25%;
+    bottom: 25%;
+    margin: auto;
+    background: black;
+}
+
+.btn-outline-success{
+    color: #d3dbdb;
+    border-color: #335441;
+    background-color: #335441;
+}
+
+.btn-outline-success:active:focus{
+    color: #d3dbdb!important;
+    border-color: #486f59!important;
+    background-color: #486f59!important;
+}
+
+.btn-outline-success:hover{
+    color: #d3dbdb;
+    border-color: #486f59;
+    background-color: #486f59;
+}
+
+
+
